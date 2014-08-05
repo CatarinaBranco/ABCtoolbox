@@ -4,13 +4,13 @@
 #include "TStandardSim.h"
 #include "TPmcSim.h"
 
-#ifdef _GCC_
+#if defined (__GNUC__) || (__clang__)
 	#include <unistd.h>
 	#include <sys/types.h>
 	#include <sys/wait.h>
 	#include <errno.h>
 	#include <time.h>
-#else
+#elif defined (_MSC_VER)
 	#include <process.h>
 #endif
 

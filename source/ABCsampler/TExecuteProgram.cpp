@@ -28,7 +28,7 @@ TExecuteProgram::TExecuteProgram(my_string exe){
 int TExecuteProgram::execute(){
 	double returnValue=0.0;
 		try{
-			#ifdef _GCC_
+            #if defined (__GNUC__) || (__clang__)
 			// here should be a test if the file exists.....
 			int pid, status;
 			pid = fork();
@@ -45,7 +45,7 @@ int TExecuteProgram::execute(){
 			} else {
 	           returnValue=0;
 			}
-			#else
+            #elif defined (_MSC_VER)
 			returnValue=spawnv(P_WAIT, myParameter[0], myParameter);
 			if(returnValue==-1)
 				throw TException("Error when executing '" + myExe +"'!" + myExe + "'!", _FATAL_ERROR);

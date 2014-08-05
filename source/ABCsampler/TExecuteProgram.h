@@ -6,18 +6,18 @@
 #include "global.h"
 #include "my_cstring.h"
 #include <fstream>
-#include <iostream.h>
+#include <iostream>
 #include <vector>
 #include "newmat.h"
 #include "newmatap.h"
 #include "newmatio.h"
 //-----------------------
-#ifdef _GCC_
+#if defined (__GNUC__) || (__clang__)
    #include <unistd.h>
    #include <sys/types.h>
    #include <sys/wait.h>
    #include <errno.h>
-#else
+#elif defined (_MSC_VER)
 	#include <process.h>
     //#include <sys/wait.h>
 #endif
