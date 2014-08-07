@@ -86,7 +86,6 @@ void TInputFile::initializeSimulationProgramm(my_string gotSimulationprogram, my
 				//check priors
 				if(priors->isPrior(simParam[i])){
 					checkParametersPassedToSimulationProgram=true;
-					break;
 				}
 			}
 			valuesToPassToSimulationProgramm[i]=simParam[i];
