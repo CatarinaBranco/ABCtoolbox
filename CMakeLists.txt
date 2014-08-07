@@ -1,9 +1,8 @@
-
-
 # Set minimum required cmake version
 cmake_minimum_required(VERSION 2.8)
 
-
+add_definitions(-Wno-deprecated)
+add_definitions(-Wno-write-strings)
 
 file(GLOB ABCestimator_headers
     "${CMAKE_CURRENT_SOURCE_DIR}/source/ABCestimator/*.h"
