@@ -1,6 +1,10 @@
 # Set minimum required cmake version
 cmake_minimum_required(VERSION 2.8)
 
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+endif()
+
 add_definitions(-Wno-deprecated)
 add_definitions(-Wno-write-strings)
 
