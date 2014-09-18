@@ -200,7 +200,7 @@ bool TInputFileVector::creatNewInputFilesPMC(double* newParams, int simnum){
 void TInputFileVector::performSimulations(int simnum){
    curInputFileObject=vecInputFileObjects.begin();
    for(;curInputFileObject!=endInputFileObject; ++curInputFileObject){
-	  if(!curInputFileObject->performSimulation()){
+	  if(curInputFileObject->performSimulation()){
 		 *logFile << "Simulation program returned an error! The following parameters were used:" << endl << "Parameter names:";
 		 priors->writeHeader(*logFile);
 		 *logFile << endl << "Values:";
