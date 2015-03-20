@@ -14,6 +14,7 @@ set_source_files_properties(${cumuldens_sources} PROPERTIES
 )
 
 add_executable(cumuldens${abctoolbox_version}
+    ${ABCT_EXCLUDE_FROM_ALL}
     ${cumuldens_headers}
     ${cumuldens_sources}
 )

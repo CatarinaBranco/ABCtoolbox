@@ -14,6 +14,7 @@ set_source_files_properties(${strStats_sources} PROPERTIES
 )
 
 add_executable(strStats${abctoolbox_version}
+    ${ABCT_EXCLUDE_FROM_ALL}
     ${strStats_headers}
     ${strStats_sources}
 )

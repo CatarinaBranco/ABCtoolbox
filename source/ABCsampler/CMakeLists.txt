@@ -14,6 +14,7 @@ set_source_files_properties(${ABCsampler_sources} PROPERTIES
 )
 
 add_executable(ABCsampler${abctoolbox_version}
+    ${ABCT_EXCLUDE_FROM_ALL}
     ${ABCsampler_headers}
     ${ABCsampler_sources}
 )

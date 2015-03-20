@@ -14,6 +14,7 @@ set_source_files_properties(${glm_sources} PROPERTIES
 )
 
 add_executable(glm${abctoolbox_version}
+    ${ABCT_EXCLUDE_FROM_ALL}
     ${glm_headers}
     ${glm_sources}
 )

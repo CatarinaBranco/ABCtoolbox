@@ -14,6 +14,7 @@ set_source_files_properties(${ABCestimator_sources} PROPERTIES
 )
 
 add_executable(ABCestimator${abctoolbox_version}
+    ${ABCT_EXCLUDE_FROM_ALL}
     ${ABCestimator_headers}
     ${ABCestimator_sources}
 )

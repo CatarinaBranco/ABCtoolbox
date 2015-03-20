@@ -14,6 +14,7 @@ set_source_files_properties(${linearTransformer_sources} PROPERTIES
 )
 
 add_executable(transformer${abctoolbox_version}
+    ${ABCT_EXCLUDE_FROM_ALL}
     ${linearTransformer_headers}
     ${linearTransformer_sources}
 )
