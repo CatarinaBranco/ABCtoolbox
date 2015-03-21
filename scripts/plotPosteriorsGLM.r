@@ -68,24 +68,29 @@ if(!file.exists(filename)){
 					post<-read.table(filename, header=T);
 					pdf(paste(directory, "ABC_GLM_PosteriorPlots_Obs", (i-1), ".pdf", sep=""), width=12, height=9);
 					par(mfrow=c(3,4));
-					for(j in 1:length(params)){
-						p<-density(sims[,params[j]]);
+					for(j in 1:dim(trueParams)[2]){
+					    paramName = colnames(trueParams)[j]
+						p<-density(sims[,paramName]);
 						xmax<-max(p$x);
 						xmin<-min(p$x); 
-						ymax<-max(p$y);					
-						ymax<-max(max(p$y), max(post[,2*j+1]))*1.1;
-						plot(post[,2*j], post[,2*j+1], main=names(sims)[params[j]], xlab=paste(names(sims)[params[j]], ", mode at ", post[post[,2*j+1]==max(post[,2*j+1]),2*j]), ylab="Density", type='l', col="red", xlim=c(xmin, xmax), ylim=c(0,ymax));
-						lines(p, col="black");
-						#plot retained if possible
+						
 						filename<-paste(directory, outputPrefix, "BestSimsParamStats_Obs", (i-1), ".txt", sep="");
-						if(file.exists(filename)){ 
-							ret<-read.table(filename, header=T);
-							print(ret[1:2,]);
-							lines(density(ret[,j+2]), col="blue");
-						}
+						ret<-read.table(filename, header=T);
+						
+						ymax<-max(p$y);					
+						ymax<-max(max(p$y), max(post[,2*j+1]), max(density(ret[,j+2])$y))*1.1;
+						plot(post[,2*j], post[,2*j+1], main=paramName, xlab=paste(paramName, ", mode at ", post[post[,2*j+1]==max(post[,2*j+1]),2*j]), ylab="Density", type='l', log="x", col="red", xlim=c(0.0001, xmax), ylim=c(0,ymax));
+						lines(p, col="black");
+						
+						#plot retained if possible
+						lines(density(ret[,j+2]), col="blue");
+						
 						#plot true value
 						if(trueParamsRead){
-							abline(v=trueParams[i, params[j]], col="black");
+						    paramVal = trueParams[,paramName]
+			                abline(v=paramVal, col="black");
+			                abline(v=2*paramVal, col="black", lty=2);
+			                abline(v=0.5*paramVal, col="black", lty=2);
 						}
 					}
 					dev.off();	
