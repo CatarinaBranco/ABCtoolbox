@@ -20,7 +20,7 @@ add_executable(ABCestimator${abctoolbox_version}
 )
 
 add_custom_command(TARGET ABCestimator${abctoolbox_version} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/Scripts/plotPosteriorsGLM.r" "$<TARGET_FILE_DIR:ABCestimator${abctoolbox_version}>"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/../../Scripts/plotPosteriorsGLM.r" "$<TARGET_FILE_DIR:ABCestimator${abctoolbox_version}>"
 )
 
 if(ABCToolbox_Append_Version)
