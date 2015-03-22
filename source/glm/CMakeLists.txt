@@ -9,9 +9,11 @@ file(GLOB glm_sources
     "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
 )
 
-set_source_files_properties(${glm_sources} PROPERTIES
-    COMPILE_FLAGS "-Wno-deprecated -Wno-write-strings -Wno-logical-op-parentheses -Wno-c++11-compat-deprecated-writable-strings -Wno-extra-tokens "
-)
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
+    set_source_files_properties(${glm_sources} PROPERTIES
+        COMPILE_FLAGS "-Wno-deprecated -Wno-write-strings -Wno-logical-op-parentheses -Wno-c++11-compat-deprecated-writable-strings -Wno-extra-tokens "
+    )
+endif()
 
 add_executable(glm${abctoolbox_version}
     ${ABCT_EXCLUDE_FROM_ALL}
