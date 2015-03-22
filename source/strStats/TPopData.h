@@ -8,7 +8,7 @@
 #ifndef TPOPDATA_H_
 #define TPOPDATA_H_
 
-#include "my_cstring.h";
+#include "my_cstring.h"
 #include "TException.h"
 #include <strstream>
 #include <fstream>

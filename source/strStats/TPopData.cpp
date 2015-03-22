@@ -5,7 +5,7 @@
  *      Author: wegmannd
  */
 
-#include "TPopData.h";
+#include "TPopData.h"
 
 TLocus::TLocus(int gotSize){
 	size=gotSize;
