@@ -3,6 +3,8 @@
 #pragma hdrstop
 
 #include "TSimData.h"
+#include <algorithm>
+
 #pragma package(smart_init)
 //---------------------------------------------------------------------------
 
@@ -434,12 +436,16 @@ float TSimData::partitionP(float** a, int left, int right, int pivotIndex) {
 }
 
 void TSimData::quicksortP(float** a, int left, int right){
-	if(right > left){
-		int pivotIndex=(left+right)/2;
-		pivotIndex=partitionP(a, left, right, pivotIndex);
-		quicksortP(a, left, pivotIndex-1);
-		quicksortP(a, pivotIndex+1, right);
-	}
+    /*Kurt: I replaced their quicksort code with a call to std::sort.
+    Their recursive implementation causes a segfault, which I think is a stack
+    overflow.*/
+    std::vector<float*> data;
+    for(size_t i = 0; i <= right; ++i) {
+        data.push_back(a[i]);
+    }
+    std::sort(data.begin(), data.end(), [](const float* a, const float* b) {
+        return *a < *b;        
+    });
 }
 //---------------------------------------------------------------------------
 
