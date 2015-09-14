@@ -36,6 +36,13 @@
 # Set minimum required cmake version
 cmake_minimum_required(VERSION 2.8)
 
+if(NOT abctoolbox_master_build)
+    message(WARNING "
+strStats is being meta-built independently from the main ABCToolbox project.
+This is not recommended and could lead to issues. Please run CMake out of source \
+from the repository root and build the entire project together.
+")
+
 ## strStats ##############################################################################
 file(GLOB strStats_headers
     "${CMAKE_CURRENT_SOURCE_DIR}/*.h"

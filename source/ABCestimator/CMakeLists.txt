@@ -36,6 +36,15 @@
 # Set minimum required cmake version
 cmake_minimum_required(VERSION 3.0)
 
+if(NOT abctoolbox_master_build)
+    message(WARNING "
+ABCestimator is being meta-built independently from the main ABCToolbox project.
+This is not recommended and could lead to issues. Please run CMake out-of-source \
+from the repository root and build the entire project together.
+See the README for details.
+")
+endif()
+
 ## ABCestimator ##########################################################################
 file(GLOB ABCestimator_headers
     "${CMAKE_CURRENT_SOURCE_DIR}/*.h"

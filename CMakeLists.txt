@@ -36,6 +36,17 @@
 # Set minimum required cmake version
 cmake_minimum_required(VERSION 3.0)
 
+if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+    message(FATAL_ERROR "
+In-source builds are not supported.
+The source dir: ${CMAKE_SOURCE_DIR} is the same as the build dir: ${CMAKE_BINARY_DIR}
+Make a build dir that is not the root repo dir and re-run cmake from there. Please \
+refer to the documentation for assistance.
+")
+endif()
+
+set(abctoolbox_master_build ON)
+
 if(ABCToolbox_Append_Version)
     set(ABCToolbox_version _2_0_0)
 else()
