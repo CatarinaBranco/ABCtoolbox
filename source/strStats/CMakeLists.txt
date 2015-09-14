@@ -42,7 +42,8 @@ strStats is being meta-built independently from the main ABCToolbox project.
 This is not recommended and could lead to issues. Please run CMake out of source \
 from the repository root and build the entire project together.
 ")
-
+endif()
+    
 ## strStats ##############################################################################
 file(GLOB strStats_headers
     "${CMAKE_CURRENT_SOURCE_DIR}/*.h"
